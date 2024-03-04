@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CustomCRM.Entities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1f7954b0248668fbce2111ac11822e9134f0fb5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f28f4ba0be6565ab44f163490cc2117f4308ffc")]
 [assembly: System.Reflection.AssemblyProductAttribute("CustomCRM.Entities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CustomCRM.Entities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
