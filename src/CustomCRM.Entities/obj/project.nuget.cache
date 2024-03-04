@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "80dxaeesJsLMECgZHvyo2xmUkO7xN05eqTrlPWGUVlSXK9ZMnTR82UBoOLTFC7ywp4VrKmOG2pknLVMqY5cCbw==",
+  "dgSpecHash": "tJQs6ujWPCHahCY7itBfSBE79LBGAfm4VvJKHSmopLKgoIMxvjraN1Fl+LrEmLRzWoKJqeH2U8L0C01tY2wmQQ==",
   "success": true,
-  "projectFilePath": "C:\\Обучение\\CRM\\src\\CustomCRM.Entities\\CustomCRM.Entities.csproj",
+  "projectFilePath": "C:\\Обучение\\CustomCRM\\src\\CustomCRM.Entities\\CustomCRM.Entities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

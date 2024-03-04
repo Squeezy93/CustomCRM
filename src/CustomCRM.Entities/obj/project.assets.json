@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Обучение\\CRM\\src\\CustomCRM.Entities\\CustomCRM.Entities.csproj",
+      "projectUniqueName": "C:\\Обучение\\CustomCRM\\src\\CustomCRM.Entities\\CustomCRM.Entities.csproj",
       "projectName": "CustomCRM.Entities",
-      "projectPath": "C:\\Обучение\\CRM\\src\\CustomCRM.Entities\\CustomCRM.Entities.csproj",
+      "projectPath": "C:\\Обучение\\CustomCRM\\src\\CustomCRM.Entities\\CustomCRM.Entities.csproj",
       "packagesPath": "C:\\Users\\squee\\.nuget\\packages\\",
-      "outputPath": "C:\\Обучение\\CRM\\src\\CustomCRM.Entities\\obj\\",
+      "outputPath": "C:\\Обучение\\CustomCRM\\src\\CustomCRM.Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\squee\\AppData\\Roaming\\NuGet\\NuGet.Config",
