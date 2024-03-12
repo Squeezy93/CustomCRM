@@ -20,6 +20,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 * [![Next][Next.js]][Next-url]
+* [![.NET][.NET.com][.NET-rul]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -150,3 +151,5 @@ Project Link: [https://github.com/Squeezy93/CustomCRM](https://github.com/Squeez
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[.NET.com]: https://img.shields.io/badge/.NET-blue?logo=dotnet&logoColor=white&style=for-the-badge
+[.NET-url]: https://dotnet.microsoft.com/
