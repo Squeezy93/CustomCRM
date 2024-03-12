@@ -20,7 +20,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 * [![Next][Next.js]][Next-url]
-* [![.NET][.NET.com][.NET-url]
+* [![.NET][.NET.com]][.NET-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
