@@ -11,7 +11,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Custom CRM for better storage and management of orders and their statistics.
+Custom CRM for a better storage and management of orders and their statistics.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
