@@ -1,0 +1,6 @@
+@CustomCRM.Api_HostAddress = http://localhost:5274
+
+GET {{CustomCRM.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
