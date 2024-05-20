@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CustomCRM.Application\CustomCRM.Application.csproj" />
+    <ProjectReference Include="..\CustomCRM.Domain\CustomCRM.Domain.csproj" />
+    <ProjectReference Include="..\CustomCRM.Infrastructure\CustomCRM.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
