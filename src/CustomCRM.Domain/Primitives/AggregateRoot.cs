@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-
-namespace CustomCRM.Domain.Primitives
+﻿namespace CustomCRM.Domain.Primitives
 {
     public abstract class AggregateRoot
     {
@@ -8,9 +6,6 @@ namespace CustomCRM.Domain.Primitives
 
         public ICollection<DomainEvent> GetDomainEvents() => _domainEvents;
 
-        protected void Raise(DomainEvent domainEvent)
-        {
-            _domainEvents.Add(domainEvent);
-        }
+        protected void Raise(DomainEvent domainEvent) => _domainEvents.Add(domainEvent);
     }
 }

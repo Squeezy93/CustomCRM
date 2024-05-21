@@ -1,4 +1,3 @@
-
 namespace CustomCRM.Api
 {
     public class Program

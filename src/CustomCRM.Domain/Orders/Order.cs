@@ -1,7 +1,7 @@
-﻿using CustomCRM.Domain.Primitives;
+﻿using CustomCRM.Domain.Commons;
+using CustomCRM.Domain.Primitives;
 using CustomCRM.Domain.Raids;
 using CustomCRM.Domain.Services;
-using CustomCRM.Domain.ValueObjects;
 
 namespace CustomCRM.Domain.Orders
 {

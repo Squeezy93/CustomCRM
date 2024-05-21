@@ -1,4 +1,4 @@
-﻿namespace CustomCRM.Domain.ValueObjects
+﻿namespace CustomCRM.Domain.Commons
 {
     public enum Difficult
     {

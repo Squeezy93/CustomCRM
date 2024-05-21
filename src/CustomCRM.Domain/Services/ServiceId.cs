@@ -1,6 +1,6 @@
 ﻿namespace CustomCRM.Domain.Services
 {
-    public record ServiceId(Guid id)
+    public record ServiceId(Guid Id)
     {
     }
 }
