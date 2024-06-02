@@ -1,7 +1,9 @@
-﻿namespace CustomCRM.Domain.Raids
+﻿using CustomCRM.Domain.Primitives;
+
+namespace CustomCRM.Domain.Raids
 {
-    public class Raid
+    public class Raid : AggregateRoot
     {
-        public RaidId? Id { get; set; }
+        public RaidId Id { get; set; }
     }
 }
