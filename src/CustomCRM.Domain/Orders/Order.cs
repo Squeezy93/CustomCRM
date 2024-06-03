@@ -11,8 +11,8 @@ namespace CustomCRM.Domain.Orders
         public OrderId? Id { get; set; }
         public List<Raid> Raids { get; set; }
         public List<Service>? Services { get; set; }
-        public DateTime DateTimeOfCreation { get; set; }
-        public string? OrderShopId { get; set; }
+        public DateTime DateTimeOfCreation { get ; private set; }
+        public string? OrderShopId { get; set; } 
         public string? ShopName { get; set; }
         public string? NickServer {  get; set; }
         public decimal TotalPrice { get; private set; }
@@ -41,13 +41,10 @@ namespace CustomCRM.Domain.Orders
         { 
         }
 
-        public decimal FullOrderPrice(List<Service> services)
+        public static decimal FullOrderPrice(List<Service> services)
         {
             decimal total = 0;
-            foreach (Service service in services)
-            {
-                total += service.Price * service.Quantity;
-            }
+            
             return total;
         }
 
