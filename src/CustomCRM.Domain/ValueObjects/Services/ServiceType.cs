@@ -31,5 +31,13 @@ namespace CustomCRM.Domain.ValueObjects.Services
 
             return new ServiceType(value);
         }
+
+        public static ServiceType Update(string value)
+        {
+            if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("Service type cannot be null or empty", nameof(value));
+
+            return new ServiceType(value);
+        }
     }
 }

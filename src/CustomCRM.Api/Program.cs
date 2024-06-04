@@ -33,26 +33,11 @@ namespace CustomCRM.Api
             app.MapControllers();
 
             app.Run();*/
-            var service = Service.Create("full heroic", Domain.Commons.Difficult.Normal, Domain.Commons.Status.Unfinished, 5, "RUB", 1, "");            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /*var service2 = Service.Create(new ServiceId(Guid.NewGuid()), "2", Domain.Commons.Difficult.Heroic, Domain.Commons.Status.Unfinished, 2, 2, "");
-            Console.WriteLine(service2.Id);
-            service2 = Service.Update(Guid.NewGuid(), "2", Domain.Commons.Difficult.Heroic, Domain.Commons.Status.Unfinished, 2, 2, "");
-            Console.WriteLine(service2.Id);*/
+            var service = Service.Create("Full heroic", Domain.Commons.Difficult.Heroic, 4, "RUB", 1, "");
+            Console.WriteLine(service.Id.Id);
+            
+            service = Service.Update(Guid.NewGuid(), "Full heroic", Domain.Commons.Difficult.Heroic, Domain.Commons.Status.Ongoing, 5, "RUB", 5, "imgur.com", " 123");
+            Console.WriteLine(service.Id.Id);            
         }
     }
 }

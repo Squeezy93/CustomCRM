@@ -15,14 +15,13 @@ namespace CustomCRM.Domain.Orders
         public string? OrderShopId { get; set; } 
         public string? ShopName { get; set; }
         public string? NickServer {  get; set; }
-        public decimal TotalPrice { get; private set; }
-        public string ScreenShoot {  get; set; }
+        public decimal TotalPrice { get; private set; }        
         public Status Status { get; set; }
         public string Comment { get; set; }
         //public int ManagerId { get; set; }
         
         public Order(OrderId id, List<Raid> raids, List<Service> services, DateTime dateTimeOfCreation, string orderShopId, string shopName, string nickServer,
-             decimal totalPrice, string screenShoot, Status status, string comment)
+             decimal totalPrice, Status status, string comment)
         {
             Id = id;
             Raids = raids;
@@ -31,8 +30,7 @@ namespace CustomCRM.Domain.Orders
             OrderShopId = orderShopId;
             ShopName = shopName;
             NickServer = nickServer; 
-            TotalPrice = totalPrice;
-            ScreenShoot = screenShoot;
+            TotalPrice = totalPrice;            
             Status = status;
             Comment = comment;
         }
@@ -49,14 +47,14 @@ namespace CustomCRM.Domain.Orders
         }
 
         public static Order Create(List<Raid> raids, List<Service> services, DateTime dateTimeOfCreation, string orderShopId, string shopName, string nickServer,
-             decimal totalPrice, string screenShoot, Status status, string comment)
+             decimal totalPrice, Status status, string comment)
         {
-            return new Order(new OrderId(Guid.NewGuid()), raids, services, dateTimeOfCreation, orderShopId, shopName, nickServer, totalPrice, screenShoot, status, comment);
+            return new Order(new OrderId(Guid.NewGuid()), raids, services, dateTimeOfCreation, orderShopId, shopName, nickServer, totalPrice, status, comment);
         }
         public static Order Update(Guid id, List<Raid> raids, List<Service> services, DateTime dateTimeOfCreation, string orderShopId, string shopName, string nickServer,
-             decimal totalPrice, string screenShoot, Status status, string comment)
+             decimal totalPrice, Status status, string comment)
         {
-            return new Order(new OrderId(id), raids, services, dateTimeOfCreation, orderShopId, shopName, nickServer, totalPrice, screenShoot, status, comment);
+            return new Order(new OrderId(id), raids, services, dateTimeOfCreation, orderShopId, shopName, nickServer, totalPrice, status, comment);
         }
     }
 }

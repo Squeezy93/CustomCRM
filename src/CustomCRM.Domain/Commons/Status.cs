@@ -3,9 +3,8 @@
     public enum Status
     {
         Waiting,
-        Ongoing,
+        Ongoing,        
         Unfinished,
-        NotComplete,
         Complete
     }
 }

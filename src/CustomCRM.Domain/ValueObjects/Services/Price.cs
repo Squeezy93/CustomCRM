@@ -27,7 +27,6 @@
 
         public static Price Create(decimal amount, string currency)
         {
-
             if (amount <= 0)
                 throw new ArgumentException("Price cannot be negative or equal 0", nameof(amount));
 
@@ -35,6 +34,17 @@
                 throw new ArgumentException("Currency cannot be null or empty", nameof(currency));
 
             return new Price(amount, currency);
-        }       
+        }
+
+        public static Price Update(decimal amount, string currency)
+        {
+            if (amount <= 0)
+                throw new ArgumentException("Price cannot be negative or equal 0", nameof(amount));
+
+            if (string.IsNullOrEmpty(currency))
+                throw new ArgumentException("Currency cannot be null or empty", nameof(currency));
+
+            return new Price(amount, currency);
+        }
     }
 }
