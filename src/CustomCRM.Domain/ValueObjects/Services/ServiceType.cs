@@ -1,5 +1,4 @@
-﻿
-namespace CustomCRM.Domain.ValueObjects.Services
+﻿namespace CustomCRM.Domain.ValueObjects.Services
 {
     public class ServiceType
     {
@@ -10,34 +9,24 @@ namespace CustomCRM.Domain.ValueObjects.Services
             Value = value;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-
-            var other = (ServiceType)obj;
-            return Value == other.Value;
-        }
-
-        public override int GetHashCode()
-        {
-            return Value.GetHashCode();
-        }
-
         public static ServiceType Create(string value)
         {
-            if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("Service type cannot be null or empty", nameof(value));
-
+            IsValid(value);
             return new ServiceType(value);
         }
 
         public static ServiceType Update(string value)
         {
+            IsValid(value);
+            return new ServiceType(value);
+        }
+
+        private static bool IsValid(string value)
+        {
             if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException("Service type cannot be null or empty", nameof(value));
 
-            return new ServiceType(value);
+            return true;
         }
     }
 }

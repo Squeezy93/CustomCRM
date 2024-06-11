@@ -2,7 +2,6 @@
 using CustomCRM.Domain.Primitives;
 using CustomCRM.Domain.Raids;
 using CustomCRM.Domain.Services;
-using System.Runtime.CompilerServices;
 
 namespace CustomCRM.Domain.Orders
 {
