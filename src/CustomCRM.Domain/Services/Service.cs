@@ -36,7 +36,7 @@ namespace CustomCRM.Domain.Services
             Price = price;
             Screenshot = screenshot;
             Quantity = quantity;
-            Comment = comment;
+            Comment = string.IsNullOrWhiteSpace(comment) ? string.Empty : comment;
         }
 
         //EF

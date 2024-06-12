@@ -12,8 +12,9 @@
         }
 
         public static Screenshot Create(string screenshotURL)
-        {            
-            return new Screenshot(screenshotURL);
+        {
+            var screenshot = string.IsNullOrEmpty(screenshotURL) || string.IsNullOrWhiteSpace(screenshotURL) ? string.Empty : screenshotURL;
+            return new Screenshot(screenshot);
         }
 
         public static Screenshot Update(string screenshotURL)

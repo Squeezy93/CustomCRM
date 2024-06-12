@@ -1,7 +1,3 @@
-using CustomCRM.Domain.Orders;
-using CustomCRM.Domain.Services;
-using CustomCRM.Domain.ValueObjects.Services;
-
 namespace CustomCRM.Api
 {
     public class Program

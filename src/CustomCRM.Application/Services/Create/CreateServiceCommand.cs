@@ -1,5 +1,4 @@
 ﻿using CustomCRM.Domain.Commons;
-using CustomCRM.Domain.ValueObjects.Services;
 using MediatR;
 
 namespace CustomCRM.Application.Services.Create
@@ -10,7 +9,7 @@ namespace CustomCRM.Application.Services.Create
         decimal amount, 
         string currency, 
         int quantity, 
-        string
-        screenshotURL,
+        string screenshotURL,
         string comment) : IRequest<Unit>;    
 }
+

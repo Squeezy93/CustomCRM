@@ -26,19 +26,19 @@ namespace CustomCRM.Application.Services.Create
             {
                 throw new InvalidOperationException(nameof(price));
             }
-            if (Screenshot.Create(command.screenshotURL) is not Screenshot screenshot) 
+            if (Screenshot.Create(command.screenshotURL) is not Screenshot screenshotURL) 
             {
-                throw new InvalidOperationException(nameof(screenshot));
-            }
+                throw new InvalidOperationException(nameof(screenshotURL));
+            }                     
 
             var service = new Service(
-                new ServiceId(Guid.NewGuid()), 
-                serviceType, 
-                Domain.Commons.Difficult.Normal, 
-                Domain.Commons.Status.Waiting, 
-                price, 
-                command.quantity, 
-                screenshot, 
+                new ServiceId(Guid.NewGuid()),
+                serviceType,
+                command.difficult,
+                command.status,
+                price,
+                command.quantity,
+                screenshotURL,
                 command.comment
                 );
 
