@@ -13,11 +13,11 @@
   <ItemGroup>
     <Folder Include="Services\Update\" />
     <Folder Include="Services\Delete\" />
-    <Folder Include="Services\GetAll\" />
     <Folder Include="Services\GetById\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ErrorOr" Version="2.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
   </ItemGroup>
 

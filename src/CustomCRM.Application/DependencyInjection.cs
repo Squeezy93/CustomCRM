@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using CustomCRM.Application.Common.Behaviors;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CustomCRM.Application
@@ -11,6 +13,8 @@ namespace CustomCRM.Application
             {
                 config.RegisterServicesFromAssemblyContaining<ApplicationAssemblyReference>();
             });            
+
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyReference>();
 

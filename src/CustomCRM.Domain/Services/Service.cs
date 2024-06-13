@@ -48,7 +48,8 @@ namespace CustomCRM.Domain.Services
             Guid id, 
             ServiceType serviceType, 
             Difficult difficult, 
-            Status status, Price price, 
+            Status status, 
+            Price price, 
             int quantity, 
             Screenshot screenshot, 
             string comment
