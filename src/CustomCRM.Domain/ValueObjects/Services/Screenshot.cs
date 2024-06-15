@@ -2,13 +2,13 @@
 {
     public class Screenshot
     {
-        public string URL { get; private set; }
+        public string Url { get; private set; }
 
         private const string _allowedDomain = "imgur.com";
 
         private Screenshot(string screenshotURL)
         {
-            URL = screenshotURL;
+            Url = screenshotURL;
         }
 
         public static Screenshot Create(string screenshotURL)

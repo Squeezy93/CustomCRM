@@ -8,6 +8,7 @@ namespace CustomCRM.Domain.Services
     public class Service : AggregateRoot
     {
         public ServiceId? ServiceId { get; private set; }
+        public DateTime DateTime { get; private set; }
         public ServiceType? ServiceType { get; private set; }
         public Difficult Difficult { get; private set; }
         public Status Status { get; private set; }
@@ -17,8 +18,9 @@ namespace CustomCRM.Domain.Services
         public string Comment { get; private set; }
 
         public Service(
-            ServiceId serviceId, 
+            ServiceId serviceId,
             ServiceType serviceType, 
+            DateTime dateTime,
             Difficult difficult, 
             Status status, 
             Price price, 
@@ -29,14 +31,15 @@ namespace CustomCRM.Domain.Services
         {
             IsValidQuantity(quantity);
 
-            ServiceId = serviceId;            
+            ServiceId = serviceId;
             ServiceType = serviceType;
+            DateTime = dateTime;
             Difficult = difficult;
             Status = status;            
             Price = price;
-            Screenshot = screenshot;
             Quantity = quantity;
-            Comment = string.IsNullOrWhiteSpace(comment) ? string.Empty : comment;
+            Screenshot = screenshot;
+            Comment = IsValidComment(comment) ? string.Empty : comment;
         }
 
         //EF
@@ -46,7 +49,8 @@ namespace CustomCRM.Domain.Services
 
         public static Service Update(
             Guid id, 
-            ServiceType serviceType, 
+            ServiceType serviceType,
+            DateTime dateTime,
             Difficult difficult, 
             Status status, 
             Price price, 
@@ -63,7 +67,7 @@ namespace CustomCRM.Domain.Services
             //проверка на наличие в базе данных, если существует - обновляем, если нет - выкидываем ошибку
 
 
-            return new Service(new ServiceId(id), serviceType, difficult, status, price, quantity, screenshot, comment);
+            return new Service(new ServiceId(id), serviceType, dateTime, difficult, status, price, quantity, screenshot, comment);
         }
 
         private bool IsValidQuantity(int quantity)
@@ -74,6 +78,11 @@ namespace CustomCRM.Domain.Services
             }
 
             return true;
+        }
+
+        private bool IsValidComment(string comment)
+        {
+            return string.IsNullOrWhiteSpace(comment) || string.IsNullOrEmpty(comment);
         }
     }
 }

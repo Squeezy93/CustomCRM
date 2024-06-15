@@ -13,18 +13,18 @@ namespace CustomCRM.Application.Services.GetAll
         }
         public async Task<List<ServiceDTO>> Handle(GetAllServicesQuery request, CancellationToken cancellationToken)
         {
-            var services = await _serviceRepository.GetAll(); // метод getAll в IServiceRepository не async
+            var services = await _serviceRepository.GetAllAsync();
 
             var serviceDtos = services.Select(service => new ServiceDTO
             {
-                Id = service.ServiceId.Id,
+                Id = service.ServiceId.Value,
                 ServiceType = service.ServiceType.Value,
                 Difficult = service.Difficult,
                 Status = service.Status,
                 Amount = service.Price.Amount,
                 Currency = service.Price.Currency,
                 Quantity = service.Quantity,
-                ScreenshotURL = service.Screenshot.URL,
+                ScreenshotURL = service.Screenshot.Url,
                 Comment = service.Comment
             }).ToList();
 

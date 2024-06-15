@@ -1,4 +1,5 @@
-﻿using CustomCRM.Domain.Primitives;
+﻿using CustomCRM.Application.Untilities;
+using CustomCRM.Domain.Primitives;
 using CustomCRM.Domain.Services;
 using CustomCRM.Domain.ValueObjects.Services;
 using MediatR;
@@ -25,20 +26,17 @@ namespace CustomCRM.Application.Services.Create
             if (Price.Create(command.amount, command.currency) is not Price price) 
             {
                 throw new InvalidOperationException(nameof(price));
-            }
-            if (Screenshot.Create(command.screenshotURL) is not Screenshot screenshotURL) 
-            {
-                throw new InvalidOperationException(nameof(screenshotURL));
             }                     
 
             var service = new Service(
                 new ServiceId(Guid.NewGuid()),
                 serviceType,
+                DateTimeProvider.GetMoscowTime(), 
                 command.difficult,
-                command.status,
+                Domain.Commons.Status.Waiting,
                 price,
                 command.quantity,
-                screenshotURL,
+                Screenshot.Create(string.Empty),
                 command.comment
                 );
 
@@ -46,7 +44,7 @@ namespace CustomCRM.Application.Services.Create
 
             await _unitOfWork.SaveChangesAsync();
 
-            return Unit.Value;
-        }
+            return Unit.Value;            
+        }        
     }
 }

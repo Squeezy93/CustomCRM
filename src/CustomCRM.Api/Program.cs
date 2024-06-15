@@ -1,3 +1,6 @@
+using CustomCRM.Domain.Services;
+using CustomCRM.Domain.ValueObjects.Services;
+
 namespace CustomCRM.Api
 {
     public class Program
@@ -12,7 +15,7 @@ namespace CustomCRM.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            
+
 
             var app = builder.Build();
 
@@ -31,7 +34,6 @@ namespace CustomCRM.Api
             app.MapControllers();
 
             app.Run();
-
         }
     }
 }

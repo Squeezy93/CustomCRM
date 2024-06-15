@@ -1,6 +1,6 @@
 ﻿namespace CustomCRM.Domain.Orders
 {
-    public record OrderId(Guid id)
+    public record OrderId(Guid Value)
     {
     }
 }
