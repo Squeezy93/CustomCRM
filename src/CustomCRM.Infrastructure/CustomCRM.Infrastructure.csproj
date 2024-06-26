@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.6" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CustomCRM.Application\CustomCRM.Application.csproj" />
     <ProjectReference Include="..\CustomCRM.Domain\CustomCRM.Domain.csproj" />
   </ItemGroup>
 

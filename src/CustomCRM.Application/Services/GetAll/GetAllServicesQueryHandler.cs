@@ -1,9 +1,10 @@
-﻿using CustomCRM.Domain.Services;
+﻿using CustomCRM.Application.Services.Responses;
+using CustomCRM.Domain.Services;
 using MediatR;
 
 namespace CustomCRM.Application.Services.GetAll
 {
-    public sealed class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery, List<ServiceDTO>>
+    public sealed class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery, List<ServiceResponse>>
     {
         private readonly IServiceRepository _serviceRepository;
 
@@ -11,24 +12,24 @@ namespace CustomCRM.Application.Services.GetAll
         {
             _serviceRepository = serviceRepository ?? throw new ArgumentNullException(nameof(serviceRepository));
         }
-        public async Task<List<ServiceDTO>> Handle(GetAllServicesQuery request, CancellationToken cancellationToken)
+        public async Task<List<ServiceResponse>> Handle(GetAllServicesQuery request, CancellationToken cancellationToken)
         {
             var services = await _serviceRepository.GetAllAsync();
+            
 
-            var serviceDtos = services.Select(service => new ServiceDTO
-            {
-                Id = service.ServiceId.Value,
-                ServiceType = service.ServiceType.Value,
-                Difficult = service.Difficult,
-                Status = service.Status,
-                Amount = service.Price.Amount,
-                Currency = service.Price.Currency,
-                Quantity = service.Quantity,
-                ScreenshotURL = service.Screenshot.Url,
-                Comment = service.Comment
-            }).ToList();
+            var servicesResponce = services.Select(service => new ServiceResponse(
+                service.ServiceId.Value,
+                service.ServiceType.Value,
+                service.Difficult,
+                service.Status,
+                service.Price.Amount,
+                service.Price.Currency,
+                service.Quantity,
+                service.Screenshot.Url,
+                service.Comment
+                )).ToList();
 
-            return serviceDtos;
+            return servicesResponce;
         }
     }
 }

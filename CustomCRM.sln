@@ -9,9 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Api", "src\Custom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Domain", "src\CustomCRM.Domain\CustomCRM.Domain.csproj", "{4673A1FF-D666-4CA7-8F63-C6FA87741346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCRM.Application", "src\CustomCRM.Application\CustomCRM.Application.csproj", "{14A78D33-11B9-4AB1-A85A-93B2D67BB2AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Application", "src\CustomCRM.Application\CustomCRM.Application.csproj", "{14A78D33-11B9-4AB1-A85A-93B2D67BB2AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCRM.Infrastructure", "src\CustomCRM.Infrastructure\CustomCRM.Infrastructure.csproj", "{E58F0612-39E7-42B8-840F-F3001220DDDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Infrastructure", "src\CustomCRM.Infrastructure\CustomCRM.Infrastructure.csproj", "{E58F0612-39E7-42B8-840F-F3001220DDDD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{14A78D33-11B9-4AB1-A85A-93B2D67BB2AF} = {14A78D33-11B9-4AB1-A85A-93B2D67BB2AF}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

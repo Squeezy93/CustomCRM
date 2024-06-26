@@ -19,7 +19,7 @@ namespace CustomCRM.Application.Services.Update
 
         public async Task<Unit> Handle(UpdateServiceCommand command, CancellationToken cancellationToken)
         {
-            var serviceId = new ServiceId(command.serviceId); // правильно ли оформлено
+            var serviceId = new ServiceId(command.id); // правильно ли оформлено
             var service = await _serviceRepository.GetByIdAsync(serviceId);
 
             if (service == null)
