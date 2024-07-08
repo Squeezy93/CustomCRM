@@ -1,4 +1,4 @@
-﻿using CustomCRM.Application.Untilities;
+﻿using CustomCRM.Application.Utilities.DateTimes;
 using CustomCRM.Domain.Primitives;
 using CustomCRM.Domain.Services;
 using CustomCRM.Domain.ValueObjects.Services;
@@ -10,6 +10,7 @@ namespace CustomCRM.Application.Services.Create
     {
         private readonly IServiceRepository _serviceRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IDateTimeProvider _dateTimeProvider = new DateTimeProvider();
 
         public CreateServiceCommandHandler(IServiceRepository serviceRepository, IUnitOfWork unitOfWork)
         {
@@ -31,7 +32,7 @@ namespace CustomCRM.Application.Services.Create
             var service = new Service(
                 new ServiceId(Guid.NewGuid()),
                 serviceType,
-                DateTimeProvider.GetMoscowTime(), 
+                _dateTimeProvider.GetMoscowTime(), 
                 command.difficult,
                 Domain.Commons.Status.Waiting,
                 price,

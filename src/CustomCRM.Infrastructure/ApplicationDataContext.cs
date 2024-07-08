@@ -1,6 +1,7 @@
 ﻿using CustomCRM.Application.Data;
 using CustomCRM.Domain.Primitives;
 using CustomCRM.Domain.Services;
+using CustomCRM.Infrastructure.Persistance.Configuration;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +15,13 @@ namespace CustomCRM.Infrastructure
         {
             _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
         }
-        public DbSet<Service> Services { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new ServiceConfiguration());
+        }
+        public DbSet<Service?> Services { get; set; }
 
         public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken()) 
         {

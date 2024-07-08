@@ -1,4 +1,5 @@
 ﻿using CustomCRM.Application.Services.Responses;
+using CustomCRM.Application.Untilities.DateTime;
 using CustomCRM.Domain.Services;
 using MediatR;
 
@@ -20,6 +21,7 @@ namespace CustomCRM.Application.Services.GetAll
             var servicesResponce = services.Select(service => new ServiceResponse(
                 service.ServiceId.Value,
                 service.ServiceType.Value,
+                DateTimeProvider.GetMoscowTime(),
                 service.Difficult,
                 service.Status,
                 service.Price.Amount,

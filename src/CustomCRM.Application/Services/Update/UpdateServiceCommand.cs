@@ -4,7 +4,7 @@ using MediatR;
 namespace CustomCRM.Application.Services.Update
 {
     public record UpdateServiceCommand(
-        Guid id, // как с внешки читается этот гуид
+        Guid id,
         string serviceType,
         Difficult difficult,
         Status status,

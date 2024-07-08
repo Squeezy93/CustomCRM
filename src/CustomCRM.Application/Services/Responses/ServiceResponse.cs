@@ -4,7 +4,8 @@ namespace CustomCRM.Application.Services.Responses
 {
     public record ServiceResponse(
         Guid id, 
-        string serviceType, 
+        string serviceType,
+        DateTime dateTime,
         Difficult difficult, 
         Status status, 
         decimal amount, 
