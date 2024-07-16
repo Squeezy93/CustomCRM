@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Domain", "src\CustomCRM.Domain\CustomCRM.Domain.csproj", "{4673A1FF-D666-4CA7-8F63-C6FA87741346}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Application", "src\CustomCRM.Application\CustomCRM.Application.csproj", "{14A78D33-11B9-4AB1-A85A-93B2D67BB2AF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4673A1FF-D666-4CA7-8F63-C6FA87741346} = {4673A1FF-D666-4CA7-8F63-C6FA87741346}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Infrastructure", "src\CustomCRM.Infrastructure\CustomCRM.Infrastructure.csproj", "{E58F0612-39E7-42B8-840F-F3001220DDDD}"
 	ProjectSection(ProjectDependencies) = postProject
