@@ -1,5 +1,5 @@
 ﻿using CustomCRM.Application.Services.Responses;
-using CustomCRM.Application.Untilities.DateTime;
+using CustomCRM.Application.Utilities.DateTimes;
 using CustomCRM.Domain.Services;
 using MediatR;
 
@@ -8,6 +8,7 @@ namespace CustomCRM.Application.Services.GetById
     public sealed class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery, ServiceResponse>
     {
         private readonly IServiceRepository _serviceRepository;
+        private readonly IDateTimeProvider _dateTimeProvider = new DateTimeProvider();
 
         public GetServiceByIdQueryHandler(IServiceRepository serviceRepository)
         {
@@ -24,7 +25,7 @@ namespace CustomCRM.Application.Services.GetById
             return new ServiceResponse(
                 service.ServiceId.Value, 
                 service.ServiceType.Value,
-                DateTimeProvider.GetMoscowTime(),
+                _dateTimeProvider.GetMoscowTime(),
                 service.Difficult, 
                 service.Status, 
                 service.Price.Amount, 
