@@ -6,7 +6,6 @@ namespace CustomCRM.Application.Services.Update
     public record UpdateServiceCommand(
         Guid id,
         string serviceType,
-        DateTime timeOfCreation,
         Difficult difficult,
         Status status,
         decimal amount,

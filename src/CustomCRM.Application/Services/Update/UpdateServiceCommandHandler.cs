@@ -47,7 +47,7 @@ namespace CustomCRM.Application.Services.Update
             service = Service.Update(
                 service.ServiceId.Value,
                 serviceType,
-                command.timeOfCreation,
+                service.Created,
                 _dateTimeProvider.GetMoscowTime(),
                 command.difficult,
                 command.status,
