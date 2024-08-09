@@ -10,17 +10,18 @@ namespace CustomCRM.Application.Services.Update
     {
         private readonly IServiceRepository _serviceRepository;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IDateTimeProvider _dateTimeProvider = new DateTimeProvider();
+        private readonly IDateTimeProvider _dateTimeProvider;
 
-        public UpdateServiceCommandHandler(IServiceRepository serviceRepository, IUnitOfWork unitOfWork)
+        public UpdateServiceCommandHandler(IServiceRepository serviceRepository, IUnitOfWork unitOfWork, IDateTimeProvider dateTimeProvider)
         {
             _serviceRepository = serviceRepository ?? throw new ArgumentNullException(nameof(serviceRepository));
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            _dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(_dateTimeProvider));
         }
 
         public async Task<Unit> Handle(UpdateServiceCommand command, CancellationToken cancellationToken)
         {
-            var serviceId = new ServiceId(command.id); // правильно ли оформлено
+            var serviceId = new ServiceId(command.id); 
             var service = await _serviceRepository.GetByIdAsync(serviceId);
 
             if (service == null)
@@ -46,6 +47,7 @@ namespace CustomCRM.Application.Services.Update
             service = Service.Update(
                 service.ServiceId.Value,
                 serviceType,
+                command.timeOfCreation,
                 _dateTimeProvider.GetMoscowTime(),
                 command.difficult,
                 command.status,

@@ -1,4 +1,5 @@
 ﻿using CustomCRM.Application.Common.Behaviors;
+using CustomCRM.Application.Utilities.DateTimes;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ namespace CustomCRM.Application
             });            
 
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddScoped<IDateTimeProvider, DateTimeProvider>();
 
             services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyReference>();
 

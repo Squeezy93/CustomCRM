@@ -4,13 +4,13 @@ using CustomCRM.Domain.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace CustomCRM.Infrastructure.Persistance
+namespace CustomCRM.Infrastructure.Persistense
 {
     public class ApplicationDataContext : DbContext, IApplicationDataContext, IUnitOfWork
     {
         private readonly IPublisher _publisher;
 
-        public ApplicationDataContext(IPublisher publisher)        
+        public ApplicationDataContext(DbContextOptions<ApplicationDataContext> options, IPublisher publisher) : base(options)        
         {
             _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
         }

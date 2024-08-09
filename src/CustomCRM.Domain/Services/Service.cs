@@ -3,24 +3,25 @@ using CustomCRM.Domain.Primitives;
 using CustomCRM.Domain.ValueObjects.Services;
 
 namespace CustomCRM.Domain.Services
-
 {
     public class Service : AggregateRoot
     {
-        public ServiceId? ServiceId { get; private set; }
-        public DateTime DateTime { get; private set; }
-        public ServiceType? ServiceType { get; private set; }
+        public ServiceId ServiceId { get; private set; }
+        public DateTime Created { get; private set; }
+        public DateTime Modified { get; private set; }
+        public ServiceType ServiceType { get; private set; }
         public Difficult Difficult { get; private set; }
         public Status Status { get; private set; }
-        public Price? Price { get; private set; }
+        public Price Price { get; private set; }
         public Screenshot Screenshot { get; private set; }
         public int Quantity { get; private set; }
         public string Comment { get; private set; }
-
+        
         public Service(
             ServiceId serviceId,
             ServiceType serviceType, 
-            DateTime dateTime,
+            DateTime created,
+            DateTime modified,
             Difficult difficult, 
             Status status, 
             Price price, 
@@ -33,10 +34,11 @@ namespace CustomCRM.Domain.Services
 
             ServiceId = serviceId;
             ServiceType = serviceType;
-            DateTime = dateTime;
+            Created = created;
+            Modified = modified;
             Difficult = difficult;
             Status = status;            
-            Price = price;
+            Price = price;           
             Quantity = quantity;
             Screenshot = screenshot;
             Comment = IsValidComment(comment) ? string.Empty : comment;
@@ -50,7 +52,8 @@ namespace CustomCRM.Domain.Services
         public static Service Update(
             Guid id, 
             ServiceType serviceType,
-            DateTime dateTime,
+            DateTime created,
+            DateTime modified,
             Difficult difficult, 
             Status status, 
             Price price, 
@@ -63,26 +66,21 @@ namespace CustomCRM.Domain.Services
             {
                 throw new ArgumentException("Invalid GUID", nameof(id));
             }
-
-            //проверка на наличие в базе данных, если существует - обновляем, если нет - выкидываем ошибку
-
-
-            return new Service(new ServiceId(id), serviceType, dateTime, difficult, status, price, quantity, screenshot, comment);
+            
+            return new Service(new ServiceId(id), serviceType, created, modified, difficult, status, price, quantity, screenshot, comment);
         }
 
-        private bool IsValidQuantity(int quantity)
+        private void IsValidQuantity(int quantity)
         {
-            if(quantity <= 0)
+            if (quantity <= 0)
             {
-                throw new ArgumentException("Quantity cannot be negative or equal 0", nameof(quantity));                
+                throw new ArgumentOutOfRangeException(nameof(quantity), quantity, "Quantity must be greater than 0.");
             }
-
-            return true;
         }
 
         private bool IsValidComment(string comment)
         {
-            return string.IsNullOrWhiteSpace(comment) || string.IsNullOrEmpty(comment);
+            return string.IsNullOrWhiteSpace(comment);
         }
     }
 }

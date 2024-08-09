@@ -2,7 +2,7 @@
 using CustomCRM.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace CustomCRM.Infrastructure.Persistance.Repositories
+namespace CustomCRM.Infrastructure.Persistense.Repositories
 {
     public class ServiceRepository : IServiceRepository
     {
@@ -13,8 +13,7 @@ namespace CustomCRM.Infrastructure.Persistance.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public void Create(Service service) => _context.Services.Add(service);
-        
+        public void Create(Service service) => _context.Services.Add(service);        
 
         public void Update(Service service) => _context.Services.Update(service);
 
@@ -22,8 +21,7 @@ namespace CustomCRM.Infrastructure.Persistance.Repositories
 
         public async Task<List<Service>> GetAllAsync() => await _context.Services.ToListAsync();
 
-
-        public async Task<Service> GetByIdAsync(ServiceId Id) => await _context.Services.FirstOrDefaultAsync(c => c.ServiceId.Value == Id.Value);
-        
+        public async Task<Service> GetByIdAsync(ServiceId Id) => 
+            await _context.Services.FirstOrDefaultAsync(c => c.ServiceId.Value == Id.Value);        
     }
 }

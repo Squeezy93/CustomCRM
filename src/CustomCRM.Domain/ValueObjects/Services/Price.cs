@@ -15,22 +15,23 @@ namespace CustomCRM.Domain.ValueObjects.Services
 
         public static Price Create(decimal amount, Currency currency)
         {
-            IsValid(amount, currency);
+            Validate(amount, currency);
             return new Price(amount, currency);
         }
 
         public static Price Update(decimal amount, Currency currency)
         {
-            IsValid(amount, currency);
+            Validate(amount, currency);
             return new Price(amount, currency);
         }
 
-        private static bool IsValid(decimal amount, Currency currency)
+        private static void Validate(decimal amount, Currency currency)
         {
             if (amount <= 0)
-                throw new ArgumentException("Price cannot be negative or equal 0", nameof(amount));           
+                throw new ArgumentOutOfRangeException(nameof(amount), amount, "Price must be greater than 0.");
 
-            return true;
+            if (currency == null)
+                throw new ArgumentNullException(nameof(currency), "Currency cannot be null.");
         }
     }
 }

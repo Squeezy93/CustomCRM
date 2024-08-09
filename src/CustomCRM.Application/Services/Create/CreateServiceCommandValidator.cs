@@ -7,25 +7,33 @@ namespace CustomCRM.Application.Services.Create
         public CreateServiceCommandValidator() 
         {
             RuleFor(s => s.serviceType)
-                .NotNull()
-                .NotEmpty().WithMessage("Service type is required")
-                .MaximumLength(300).WithMessage("Service type must be 300 characters or less.");
+                .NotEmpty().WithMessage("Service type cannot be empty.")
+                .NotNull().WithMessage("Service type cannot be null.")
+                .Must(value => !string.IsNullOrWhiteSpace(value)).WithMessage("Service type cannot be whitespace.")
+                .Length(2, 50).WithMessage("Service type must be between 2 and 50 characters.")
+                .Matches("^[a-zA-Z0-9 ]*$").WithMessage("Service type can only contain letters, numbers, and spaces.");
 
             RuleFor(s => s.difficult)
-                .IsInEnum().WithMessage("Difficult must be a valid enum value.");            
+                .NotEmpty().WithMessage("Difficult cannot be empty.")
+                .NotNull().WithMessage("Difficult cannot be null.")
+                .IsInEnum().WithMessage("Difficult must be a valid enum value.");           
 
             RuleFor(s => s.amount)
-                .NotEmpty()                
-                .NotNull().WithMessage("Amount is required")
-                .GreaterThan(0).WithMessage("Amount must be greater than zero.");
+                .NotEmpty().WithMessage("Amount cannot be empty.")
+                .NotNull().WithMessage("Amount cannot be null.")
+                .GreaterThan(0).WithMessage("Amount must be greater than zero.")
+                .LessThanOrEqualTo(1000000).WithMessage("Amount must be less than or equal to 1,000,000.");
 
             RuleFor(s => s.currency)
-                .IsInEnum().WithMessage("Currency must be a valid enum value.");                
+                .NotEmpty().WithMessage("Currency cannot be empty.")
+                .NotNull().WithMessage("Currency cannot be null.")
+                .IsInEnum().WithMessage("Currency must be a valid enum value.");
 
             RuleFor(s => s.quantity)
-                .NotEmpty()
-                .NotNull().WithMessage("Quantity is required")
-                .GreaterThan(0).WithMessage("Quantity must be greater than zero.");
+                .NotEmpty().WithMessage("Quantity cannot be empty.")
+                .NotNull().WithMessage("Quantity cannot be null.")
+                .GreaterThan(0).WithMessage("Quantity must be greater than zero.")
+                .LessThanOrEqualTo(100).WithMessage("Quantity must be less than or equal to 100.");
 
             RuleFor(s => s.comment)
                 .MaximumLength(500).WithMessage("Comment must be 500 characters or less.");                

@@ -3,8 +3,7 @@
     public class Screenshot
     {
         public string Url { get; private set; }
-
-        private const string _allowedDomain = "imgur.com";
+        private const string AllowedDomain = "imgur.com";
 
         private Screenshot(string screenshotURL)
         {
@@ -13,17 +12,27 @@
 
         public static Screenshot Create(string screenshotURL)
         {
-            var screenshot = string.IsNullOrEmpty(screenshotURL) || string.IsNullOrWhiteSpace(screenshotURL) ? string.Empty : screenshotURL;
-            return new Screenshot(screenshot);
+            return new Screenshot(string.IsNullOrWhiteSpace(screenshotURL) ? string.Empty : screenshotURL);
         }
 
         public static Screenshot Update(string screenshotURL)
         {
-            if (!screenshotURL.Contains(_allowedDomain))
-            {
-                throw new ArgumentException($"Allow screenshots only from {_allowedDomain}", nameof(_allowedDomain));
-            }
+            ValidateUrl(screenshotURL);
             return new Screenshot(screenshotURL);
+        }
+
+        private static void ValidateUrl(string screenshotUrl)
+        {
+            if (string.IsNullOrWhiteSpace(screenshotUrl))
+            {
+                throw new ArgumentException("Screenshot URL cannot be null or empty", nameof(screenshotUrl));
+            }
+
+            if (!Uri.TryCreate(screenshotUrl, UriKind.Absolute, out Uri uriResult) ||
+                !uriResult.Host.Contains(AllowedDomain))
+            {
+                throw new ArgumentException($"Allow screenshots only from {AllowedDomain}", nameof(screenshotUrl));
+            }
         }
     }
 }

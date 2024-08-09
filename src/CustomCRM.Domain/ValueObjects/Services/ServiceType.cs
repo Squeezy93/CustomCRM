@@ -11,22 +11,20 @@
 
         public static ServiceType Create(string value)
         {
-            IsValid(value);
+            Validate(value);
             return new ServiceType(value);
         }
 
         public static ServiceType Update(string value)
         {
-            IsValid(value);
+            Validate(value);
             return new ServiceType(value);
         }
 
-        private static bool IsValid(string value)
+        private static void Validate(string value)
         {
-            if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("Service type cannot be null or empty", nameof(value));
-
-            return true;
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("Service type cannot be null, whitespace or empty", nameof(value));            
         }
     }
 }

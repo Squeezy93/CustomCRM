@@ -10,12 +10,13 @@ namespace CustomCRM.Application.Services.Create
     {
         private readonly IServiceRepository _serviceRepository;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IDateTimeProvider _dateTimeProvider = new DateTimeProvider();
+        private readonly IDateTimeProvider _dateTimeProvider;
 
-        public CreateServiceCommandHandler(IServiceRepository serviceRepository, IUnitOfWork unitOfWork)
+        public CreateServiceCommandHandler(IServiceRepository serviceRepository, IUnitOfWork unitOfWork, IDateTimeProvider dateTimeProvider)
         {
             _serviceRepository = serviceRepository ?? throw new ArgumentNullException(nameof(serviceRepository));
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            _dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(_dateTimeProvider));
         }
 
         public async Task<Unit> Handle(CreateServiceCommand command, CancellationToken cancellationToken)
@@ -32,7 +33,8 @@ namespace CustomCRM.Application.Services.Create
             var service = new Service(
                 new ServiceId(Guid.NewGuid()),
                 serviceType,
-                _dateTimeProvider.GetMoscowTime(), 
+                _dateTimeProvider.GetMoscowTime(),
+                _dateTimeProvider.GetMoscowTime(),
                 command.difficult,
                 Domain.Commons.Status.Waiting,
                 price,
