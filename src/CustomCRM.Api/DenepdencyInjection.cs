@@ -1,4 +1,6 @@
-﻿namespace CustomCRM.Api
+﻿using CustomCRM.Api.Middlewares;
+
+namespace CustomCRM.Api
 {
     public static class DenepdencyInjection 
     {
@@ -8,6 +10,7 @@
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddTransient<GlobalExceptionHandler>();
 
             return services;
         }

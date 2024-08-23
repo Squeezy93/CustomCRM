@@ -10,12 +10,12 @@
             Url = screenshotURL;
         }
 
-        public static Screenshot Create(string screenshotURL)
+        public static Screenshot? Create(string screenshotURL)
         {
             return new Screenshot(string.IsNullOrWhiteSpace(screenshotURL) ? string.Empty : screenshotURL);
         }
 
-        public static Screenshot Update(string screenshotURL)
+        public static Screenshot? Update(string screenshotURL)
         {
             ValidateUrl(screenshotURL);
             return new Screenshot(screenshotURL);

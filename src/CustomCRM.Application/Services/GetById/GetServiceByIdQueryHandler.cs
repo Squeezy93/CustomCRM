@@ -1,31 +1,32 @@
 ﻿using CustomCRM.Application.Services.Responses;
-using CustomCRM.Application.Utilities.DateTimes;
 using CustomCRM.Domain.Services;
 using MediatR;
+using ErrorOr;
+using CustomCRM.Domain.Commons.Errors;
 
 namespace CustomCRM.Application.Services.GetById
 {
-    public sealed class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery, ServiceResponse>
+    public sealed class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery, ErrorOr<ServiceResponse>>
     {
         private readonly IServiceRepository _serviceRepository;
-        private readonly IDateTimeProvider _dateTimeProvider = new DateTimeProvider();
 
         public GetServiceByIdQueryHandler(IServiceRepository serviceRepository)
         {
             _serviceRepository = serviceRepository ?? throw new ArgumentNullException(nameof(serviceRepository));
         }
 
-        public async Task<ServiceResponse> Handle(GetServiceByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<ServiceResponse>> Handle(GetServiceByIdQuery request, CancellationToken cancellationToken)
         {
             if (await _serviceRepository.GetByIdAsync(new ServiceId(request.id)) is not Service service) 
             {
-                throw new ArgumentNullException(nameof(service));
+                return ServiceErrors.ServiceNotFound;
             }
 
             return new ServiceResponse(
                 service.ServiceId.Value, 
                 service.ServiceType.Value,
-                _dateTimeProvider.GetMoscowTime(),
+                service.Created,
+                service.Modified,
                 service.Difficult, 
                 service.Status, 
                 service.Price.Amount, 

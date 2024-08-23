@@ -1,4 +1,6 @@
-﻿using CustomCRM.Domain.Commons;
+﻿using CustomCRM.Domain.Commons.Enums;
+using CustomCRM.Domain.Commons.Enums.Services;
+using ErrorOr;
 using MediatR;
 
 namespace CustomCRM.Application.Services.Create
@@ -10,6 +12,6 @@ namespace CustomCRM.Application.Services.Create
         Currency currency, 
         int quantity,        
         string comment
-        ) : IRequest<Unit>;    
+        ) : IRequest<ErrorOr<Unit>>;    
 }
 

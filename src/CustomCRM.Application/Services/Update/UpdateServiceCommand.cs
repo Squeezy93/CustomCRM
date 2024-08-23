@@ -1,4 +1,5 @@
-﻿using CustomCRM.Domain.Commons;
+﻿using CustomCRM.Domain.Commons.Enums;
+using CustomCRM.Domain.Commons.Enums.Services;
 using MediatR;
 
 namespace CustomCRM.Application.Services.Update

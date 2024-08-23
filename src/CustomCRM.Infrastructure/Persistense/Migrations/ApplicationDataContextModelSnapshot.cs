@@ -17,7 +17,7 @@ namespace CustomCRM.Infrastructure.Persistense.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.7")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -37,6 +37,9 @@ namespace CustomCRM.Infrastructure.Persistense.Migrations
                     b.Property<int>("Difficult")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
@@ -45,6 +48,7 @@ namespace CustomCRM.Infrastructure.Persistense.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("ServiceType")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Status")
@@ -63,10 +67,13 @@ namespace CustomCRM.Infrastructure.Persistense.Migrations
                                 .HasColumnType("uuid");
 
                             b1.Property<decimal>("Amount")
-                                .HasColumnType("numeric");
+                                .HasColumnType("numeric")
+                                .HasColumnName("PriceAmount");
 
-                            b1.Property<int>("Currency")
-                                .HasColumnType("integer");
+                            b1.Property<string>("Currency")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("PriceCurrency");
 
                             b1.HasKey("ServiceId");
 
@@ -76,7 +83,8 @@ namespace CustomCRM.Infrastructure.Persistense.Migrations
                                 .HasForeignKey("ServiceId");
                         });
 
-                    b.Navigation("Price");
+                    b.Navigation("Price")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

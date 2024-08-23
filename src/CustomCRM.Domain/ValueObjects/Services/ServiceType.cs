@@ -9,13 +9,13 @@
             Value = value;
         }
 
-        public static ServiceType Create(string value)
+        public static ServiceType? Create(string value)
         {
             Validate(value);
             return new ServiceType(value);
         }
 
-        public static ServiceType Update(string value)
+        public static ServiceType? Update(string value)
         {
             Validate(value);
             return new ServiceType(value);

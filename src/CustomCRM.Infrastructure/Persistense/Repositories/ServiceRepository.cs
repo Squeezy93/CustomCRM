@@ -22,6 +22,6 @@ namespace CustomCRM.Infrastructure.Persistense.Repositories
         public async Task<List<Service>> GetAllAsync() => await _context.Services.ToListAsync();
 
         public async Task<Service> GetByIdAsync(ServiceId Id) => 
-            await _context.Services.FirstOrDefaultAsync(c => c.ServiceId.Value == Id.Value);        
+            await _context.Services.SingleOrDefaultAsync(c => c.ServiceId == Id);        
     }
 }

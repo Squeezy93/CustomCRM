@@ -1,4 +1,4 @@
-﻿namespace CustomCRM.Domain.Commons
+﻿namespace CustomCRM.Domain.Commons.Enums
 {
     public enum Difficult
     {

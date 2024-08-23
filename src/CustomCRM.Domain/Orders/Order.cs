@@ -1,4 +1,4 @@
-﻿using CustomCRM.Domain.Commons;
+﻿using CustomCRM.Domain.Commons.Enums;
 using CustomCRM.Domain.Primitives;
 using CustomCRM.Domain.Raids;
 using CustomCRM.Domain.Services;

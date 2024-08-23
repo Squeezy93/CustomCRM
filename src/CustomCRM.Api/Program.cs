@@ -1,3 +1,4 @@
+using CustomCRM.Api.Middlewares;
 using CustomCRM.Application;
 using CustomCRM.Infrastructure;
 
@@ -22,11 +23,11 @@ namespace CustomCRM.Api
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            app.UseMiddleware<GlobalExceptionHandler>();
 
-            app.UseAuthorization();
+            /*            app.UseHttpsRedirection();
 
-
+                        app.UseAuthorization();*/
             app.MapControllers();
 
             app.Run();

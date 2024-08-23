@@ -8,21 +8,21 @@ namespace CustomCRM.Application.Services.GetAll
     public sealed class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery, List<ServiceResponse>>
     {
         private readonly IServiceRepository _serviceRepository;
-        private readonly IDateTimeProvider _dateTimeProvider = new DateTimeProvider();
 
         public GetAllServicesQueryHandler(IServiceRepository serviceRepository)
         {
             _serviceRepository = serviceRepository ?? throw new ArgumentNullException(nameof(serviceRepository));
         }
+
         public async Task<List<ServiceResponse>> Handle(GetAllServicesQuery request, CancellationToken cancellationToken)
         {
-            var services = await _serviceRepository.GetAllAsync();
-            
+            var services = await _serviceRepository.GetAllAsync();            
 
             var servicesResponce = services.Select(service => new ServiceResponse(
                 service.ServiceId.Value,
                 service.ServiceType.Value,
-                _dateTimeProvider.GetMoscowTime(),
+                service.Created,
+                service.Modified,
                 service.Difficult,
                 service.Status,
                 service.Price.Amount,

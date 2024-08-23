@@ -1,4 +1,4 @@
-﻿using CustomCRM.Domain.Commons;
+﻿using CustomCRM.Domain.Commons.Enums.Services;
 
 namespace CustomCRM.Domain.ValueObjects.Services
 {
@@ -13,13 +13,13 @@ namespace CustomCRM.Domain.ValueObjects.Services
             Currency = currency;
         }
 
-        public static Price Create(decimal amount, Currency currency)
+        public static Price? Create(decimal amount, Currency currency)
         {
             Validate(amount, currency);
             return new Price(amount, currency);
         }
 
-        public static Price Update(decimal amount, Currency currency)
+        public static Price? Update(decimal amount, Currency currency)
         {
             Validate(amount, currency);
             return new Price(amount, currency);

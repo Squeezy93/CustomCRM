@@ -1,9 +1,9 @@
-﻿namespace CustomCRM.Domain.Commons
+﻿namespace CustomCRM.Domain.Commons.Enums
 {
     public enum Status
     {
         Waiting,
-        Ongoing,        
+        Ongoing,
         Unfinished,
         Complete
     }

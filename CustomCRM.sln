@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Tests", "src\CustomCRM.Tests\CustomCRM.Tests.csproj", "{809D63D5-4680-4410-AAD4-718CF8428A8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Api", "src\CustomCRM.Api\CustomCRM.Api.csproj", "{4CF6BC2F-4BA7-4375-83F0-0C3BF14BD1B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4673A1FF-D666-4CA7-8F63-C6FA87741346} = {4673A1FF-D666-4CA7-8F63-C6FA87741346}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomCRM.Domain", "src\CustomCRM.Domain\CustomCRM.Domain.csproj", "{4673A1FF-D666-4CA7-8F63-C6FA87741346}"
 EndProject

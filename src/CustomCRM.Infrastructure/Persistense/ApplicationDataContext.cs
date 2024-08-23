@@ -17,25 +17,25 @@ namespace CustomCRM.Infrastructure.Persistense
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDataContext).Assembly);
         }
 
-        public DbSet<Service?> Services { get; set; }
+        public DbSet<Service> Services { get; set; }
 
-        public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken())
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             IEnumerable<DomainEvent> domainEvents = ChangeTracker.Entries<AggregateRoot>()
                 .Select(e => e.Entity)
                 .Where(e => e.GetDomainEvents().Any())
                 .SelectMany(e => e.GetDomainEvents());
 
+            int result = await base.SaveChangesAsync(cancellationToken);
+
             foreach (var domainEvent in domainEvents)
             {
                 await _publisher.Publish(domainEvent, cancellationToken);
             }
 
-            int result = await base.SaveChangesAsync(cancellationToken);
             return result;
         }
     }

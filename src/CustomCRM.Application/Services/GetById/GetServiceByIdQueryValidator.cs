@@ -1,6 +1,11 @@
-﻿namespace CustomCRM.Application.Services.GetById
+﻿using FluentValidation;
+
+namespace CustomCRM.Application.Services.GetById
 {
-    public class GetServiceByIdQueryValidator()
+    public class GetServiceByIdQueryValidator : AbstractValidator<GetServiceByIdQuery>
     {
+        public GetServiceByIdQueryValidator()
+        {
+        }
     }
 }
