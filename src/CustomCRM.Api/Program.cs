@@ -1,3 +1,4 @@
+using CustomCRM.Api.Extensions;
 using CustomCRM.Api.Middlewares;
 using CustomCRM.Application;
 using CustomCRM.Infrastructure;
@@ -6,11 +7,11 @@ namespace CustomCRM.Api
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddPresentation()
+            builder.Services.AddPresentation(builder.Configuration)
                 .AddInfrastructure(builder.Configuration)
                 .AddApplication();
 
@@ -21,13 +22,10 @@ namespace CustomCRM.Api
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+                await app.ApplyMigrationsAsync();
             }
-
             app.UseMiddleware<GlobalExceptionHandler>();
 
-            /*            app.UseHttpsRedirection();
-
-                        app.UseAuthorization();*/
             app.MapControllers();
 
             app.Run();

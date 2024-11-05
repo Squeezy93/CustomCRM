@@ -4,7 +4,7 @@ using CustomCRM.Domain.ValueObjects.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CustomCRM.Infrastructure.Persistense.Configuration
+namespace CustomCRM.Infrastructure.Persistense.Configuration.Services
 {
     public class ServiceConfiguration : IEntityTypeConfiguration<Service>
     {
@@ -24,7 +24,7 @@ namespace CustomCRM.Infrastructure.Persistense.Configuration
             {
                 price.Property(p => p.Amount)
                     .HasColumnName("PriceAmount");
-                
+
                 price.Property(p => p.Currency)
                     .HasColumnName("PriceCurrency")
                     .HasConversion(
