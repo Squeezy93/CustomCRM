@@ -30,7 +30,7 @@ namespace CustomCRM.Api.Middlewares
 					Status = (int)HttpStatusCode.InternalServerError,
 					Type = "Server error",
 					Title = "Server error",
-					Detail = "Server error"
+					Detail = e.Message
 				};
 
 				string json = JsonSerializer.Serialize(problemDetails);

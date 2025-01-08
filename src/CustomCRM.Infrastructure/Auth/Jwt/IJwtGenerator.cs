@@ -1,6 +1,6 @@
 ﻿using CustomCRM.Domain.Users;
 
-namespace CustomCRM.Infrastructure.Auth
+namespace CustomCRM.Infrastructure.Auth.Jwt
 {
     public interface IJwtGenerator
     {

@@ -19,7 +19,7 @@ namespace CustomCRM.Api.Controllers
         {
             var result = await _sender.Send(loginQuery);
 
-            return result.Match(user => Ok(), errors => Problem(errors));
+            return result.Match(user => Ok(user), errors => Problem(errors));
         }
     }
 }

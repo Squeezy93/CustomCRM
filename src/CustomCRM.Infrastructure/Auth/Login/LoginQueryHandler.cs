@@ -1,11 +1,12 @@
 ﻿using CustomCRM.Application.Users.Login;
 using CustomCRM.Domain.Commons.Errors;
 using CustomCRM.Domain.Users;
+using CustomCRM.Infrastructure.Auth.Jwt;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace CustomCRM.Infrastructure.Auth
+namespace CustomCRM.Infrastructure.Auth.Login
 {
     public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<LoginQueryResponce>>
     {
@@ -25,7 +26,7 @@ namespace CustomCRM.Infrastructure.Auth
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
-            if (user == null) 
+            if (user == null)
             {
                 return UserErrors.UserNotFound;
             }

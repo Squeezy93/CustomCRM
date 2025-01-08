@@ -24,7 +24,7 @@ namespace CustomCRM.Application.Services.Create
 
         public async Task<ErrorOr<Unit>> Handle(CreateServiceCommand command, CancellationToken cancellationToken)
         {
-            if(ServiceType.Create(command.serviceType) is not ServiceType serviceType)
+            if(ServiceType.Create(command.serviceType) is not ServiceType serviceType || command.serviceType is null)
             {
                 return ServiceErrors.ServiceTypeIsNotValid;
             }

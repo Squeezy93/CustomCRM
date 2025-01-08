@@ -44,7 +44,7 @@ namespace CustomCRM.Api.Controllers
                 modelState.AddModelError(error.Code, error.Description);
             }
 
-            return ValidationProblem(errors);
+            return ValidationProblem(modelState);
         }
     }
 }

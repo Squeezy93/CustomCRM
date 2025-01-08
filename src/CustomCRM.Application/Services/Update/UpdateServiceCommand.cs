@@ -1,5 +1,6 @@
 ﻿using CustomCRM.Domain.Commons.Enums;
 using CustomCRM.Domain.Commons.Enums.Services;
+using ErrorOr;
 using MediatR;
 
 namespace CustomCRM.Application.Services.Update
@@ -14,5 +15,5 @@ namespace CustomCRM.Application.Services.Update
         int quantity,
         string screenshot,
         string comment
-        ) : IRequest<Unit>; 
+        ) : IRequest<ErrorOr<Unit>>; 
 }

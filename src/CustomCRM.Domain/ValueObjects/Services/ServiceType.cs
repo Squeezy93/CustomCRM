@@ -9,22 +9,24 @@
             Value = value;
         }
 
-        public static ServiceType? Create(string value)
+        public static ServiceType Create(string value)
         {
             Validate(value);
             return new ServiceType(value);
         }
 
-        public static ServiceType? Update(string value)
+        public static ServiceType Update(string value)
         {
             Validate(value);
             return new ServiceType(value);
         }
 
-        private static void Validate(string value)
+        private static string? Validate(string value)
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("Service type cannot be null, whitespace or empty", nameof(value));            
+            if (string.IsNullOrWhiteSpace(value) || string.IsNullOrEmpty(value))
+                return null;
+
+            return value;
         }
     }
 }

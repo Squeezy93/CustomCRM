@@ -1,11 +1,12 @@
 ﻿using CustomCRM.Application.Services.Responses;
 using CustomCRM.Application.Utilities.DateTimes;
 using CustomCRM.Domain.Services;
+using ErrorOr;
 using MediatR;
 
 namespace CustomCRM.Application.Services.GetAll
 {
-    public sealed class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery, List<ServiceResponse>>
+    public sealed class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery, ErrorOr<List<ServiceResponse>>>
     {
         private readonly IServiceRepository _serviceRepository;
 
@@ -14,7 +15,7 @@ namespace CustomCRM.Application.Services.GetAll
             _serviceRepository = serviceRepository ?? throw new ArgumentNullException(nameof(serviceRepository));
         }
 
-        public async Task<List<ServiceResponse>> Handle(GetAllServicesQuery request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<List<ServiceResponse>>> Handle(GetAllServicesQuery request, CancellationToken cancellationToken)
         {
             var services = await _serviceRepository.GetAllAsync();            
 

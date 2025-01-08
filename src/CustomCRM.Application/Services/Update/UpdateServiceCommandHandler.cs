@@ -1,12 +1,14 @@
 ﻿using CustomCRM.Application.Utilities.DateTimes;
+using CustomCRM.Domain.Commons.Errors;
 using CustomCRM.Domain.Primitives;
 using CustomCRM.Domain.Services;
 using CustomCRM.Domain.ValueObjects.Services;
+using ErrorOr;
 using MediatR;
 
 namespace CustomCRM.Application.Services.Update
 {
-    public sealed class UpdateServiceCommandHandler : IRequestHandler<UpdateServiceCommand, Unit>
+    public sealed class UpdateServiceCommandHandler : IRequestHandler<UpdateServiceCommand, ErrorOr<Unit>>
     {
         private readonly IServiceRepository _serviceRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -19,32 +21,32 @@ namespace CustomCRM.Application.Services.Update
             _dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(_dateTimeProvider));
         }
 
-        public async Task<Unit> Handle(UpdateServiceCommand command, CancellationToken cancellationToken)
+        public async Task<ErrorOr<Unit>> Handle(UpdateServiceCommand command, CancellationToken cancellationToken)
         {
             var serviceId = new ServiceId(command.id); 
             var service = await _serviceRepository.GetByIdAsync(serviceId);
 
             if (service == null)
             {
-                throw new NullReferenceException(nameof(service));
+                return ServiceErrors.ServiceNotFound;
             }
 
             if (ServiceType.Update(command.serviceType) is not ServiceType serviceType)
             {
-                throw new InvalidOperationException(nameof(serviceType));
+                return ServiceErrors.ServiceTypeIsNotValid;
             }
 
             if (Price.Update(command.amount, command.currency) is not Price price)
             {
-                throw new InvalidOperationException(nameof(price));
+                return ServiceErrors.PriceIsNotValid;
             }
 
             if (Screenshot.Update(command.screenshot) is not Screenshot screenshot) 
             {
-                throw new InvalidOperationException(nameof(screenshot));
+                return ServiceErrors.ScreenshotIsNotValid;
             }
 
-            service = Service.Update(
+            Service.Update(
                 service.ServiceId.Value,
                 serviceType,
                 service.Created,

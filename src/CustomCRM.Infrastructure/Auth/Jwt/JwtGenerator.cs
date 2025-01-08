@@ -5,7 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace CustomCRM.Infrastructure.Auth
+namespace CustomCRM.Infrastructure.Auth.Jwt
 {
     public class JwtGenerator : IJwtGenerator
     {
